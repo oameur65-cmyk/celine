@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy 18th Birthday 🎂</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Quicksand:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #fffdf9;
+      --soft: #f7f0e8;
+      --pink: #f2a7c3;
+      --rose: #e07ea0;
+      --peach: #f7c5a0;
+      --gold: #d4a853;
+      --gold2: #b8892e;
+      --sage: #a8c5a0;
+      --text: #3a2e2e;
+      --text-light: #8a7a7a;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--white);
+      font-family: 'Quicksand', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── PETAL BACKGROUND ── */
+    #petals-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .petal {
+      position: absolute;
+      border-radius: 150% 0 150% 0;
+      opacity: 0;
+      animation: petalFall linear infinite;
+    }
+    @keyframes petalFall {
+      0%   { transform: translateY(-20px) rotate(0deg);   opacity: 0;   }
+      10%  { opacity: 0.7; }
+      90%  { opacity: 0.4; }
+      100% { transform: translateY(105vh) rotate(540deg); opacity: 0;   }
+    }
+
+    /* ── SOFT DOTS BG ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(242,167,195,0.12) 1px, transparent 1px),
+        radial-gradient(circle, rgba(212,168,83,0.08) 1px, transparent 1px);
+      background-size: 40px 40px, 80px 80px;
+      background-position: 0 0, 20px 20px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── BALLOONS ── */
+    #balloons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: floatUp linear infinite;
+    }
+    .balloon-string {
+      width: 1px;
+      height: 45px;
+      background: rgba(180,140,120,0.4);
+    }
+    @keyframes floatUp {
+      0%   { transform: translateY(0) translateX(0) rotate(0deg);     opacity: 0.85; }
+      25%  { transform: translateY(-25vh) translateX(16px) rotate(4deg);  }
+      50%  { transform: translateY(-50vh) translateX(-12px) rotate(-4deg); opacity: 0.7; }
+      75%  { transform: translateY(-75vh) translateX(10px) rotate(3deg);  }
+      100% { transform: translateY(-110vh) translateX(-8px) rotate(-2deg); opacity: 0; }
+    }
+
+    /* ── WRAPPER ── */
+    #wrapper {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 20px 70px;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeDown 1s ease both;
+    }
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 8vw, 5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text);
+      letter-spacing: 3px;
+      line-height: 1.1;
+    }
+    header h1 span {
+      color: var(--rose);
+    }
+    header p {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 300;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-top: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+    }
+    .header-line {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 14px auto 0;
+    }
+
+    /* ── CONTENT ── */
+    #content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 1050px;
+    }
+
+    /* ── CAKE ── */
+    #cake-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeUp 1.3s ease both;
+      filter: drop-shadow(0 20px 40px rgba(212,168,83,0.2));
+    }
+
+    /* ── PARAGRAPH FRAME ── */
+    #para-frame {
+      width: clamp(270px, 36vw, 370px);
+      min-height: 300px;
+      border: 1.5px solid rgba(212,168,83,0.4);
+      border-radius: 24px;
+      background: rgba(255,253,249,0.85);
+      backdrop-filter: blur(8px);
+      box-shadow:
+        0 4px 30px rgba(212,168,83,0.1),
+        inset 0 0 50px rgba(242,167,195,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: fadeUp 1.6s ease both;
+    }
+    #para-frame::before {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px dashed rgba(212,168,83,0.2);
+      border-radius: 17px;
+      pointer-events: none;
+    }
+    .corner-ornament {
+      position: absolute;
+      color: var(--gold);
+      font-size: 16px;
+      opacity: 0.45;
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .co-tl { top: 14px;    left: 18px;  }
+    .co-tr { top: 14px;    right: 18px; }
+    .co-bl { bottom: 14px; left: 18px;  }
+    .co-br { bottom: 14px; right: 18px; }
+
+    #para-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      font-style: italic;
+      color: var(--rose);
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    #para-text {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.85;
+      text-align: center;
+      padding: 30px 30px;
+      z-index: 1;
+    }
+
+    /* ── MUSIC OVERLAY ── */
+    #music-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--white);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1s ease;
+    }
+    #music-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #music-overlay-inner {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    #music-note {
+      font-size: 58px;
+      animation: noteBounce 1.6s ease-in-out infinite;
+    }
+    @keyframes noteBounce {
+      0%,100% { transform: translateY(0) rotate(-5deg) scale(1); }
+      50%      { transform: translateY(-16px) rotate(5deg) scale(1.1); }
+    }
+    #music-overlay-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--text);
+      opacity: 0.8;
+      letter-spacing: 1px;
+    }
+    #music-play-btn {
+      padding: 13px 40px;
+      background: linear-gradient(135deg, var(--rose), var(--pink));
+      color: #fff;
+      border: none;
+      border-radius: 35px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      box-shadow: 0 6px 24px rgba(224,126,160,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    #music-play-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 10px 30px rgba(224,126,160,0.5);
+    }
+
+    /* ── MUSIC INDICATOR ── */
+    #music-indicator {
+      position: fixed;
+      bottom: 20px;
+      right: 22px;
+      color: var(--text-light);
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-family: 'Quicksand', sans-serif;
+    }
+    .music-bar {
+      width: 3px;
+      border-radius: 3px;
+      background: var(--rose);
+      animation: barPulse 1s ease-in-out infinite;
+    }
+    .music-bar:nth-child(1) { height: 8px;  animation-delay: 0s; }
+    .music-bar:nth-child(2) { height: 14px; animation-delay: 0.2s; }
+    .music-bar:nth-child(3) { height: 10px; animation-delay: 0.4s; }
+    .music-bar:nth-child(4) { height: 16px; animation-delay: 0.1s; }
+    @keyframes barPulse {
+      0%,100% { transform: scaleY(0.5); opacity: 0.5; }
+      50%      { transform: scaleY(1.3); opacity: 1; }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      margin-top: 60px;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      opacity: 0.5;
+      animation: fadeUp 2s ease both;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes flicker {
+      0%,100% { transform: scaleY(1)    scaleX(1);    opacity: 1;    }
+      25%      { transform: scaleY(1.25) scaleX(0.85); opacity: 0.85; }
+      50%      { transform: scaleY(0.88) scaleX(1.1);  opacity: 0.95; }
+      75%      { transform: scaleY(1.2)  scaleX(0.88); opacity: 0.8;  }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Music overlay -->
+<div id="music-overlay">
+  <div id="music-overlay-inner">
+    <div id="music-note">🎸</div>
+    <p id="music-overlay-title">Tap to begin the celebration</p>
+    <button id="music-play-btn" onclick="startExperience()">♪ Enter</button>
+  </div>
+</div>
+
+<!-- Local audio -->
+<audio id="bg-music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div id="petals-bg"></div>
+<div id="balloons"></div>
+
+<div id="music-indicator">
+  <div class="music-bar"></div>
+  <div class="music-bar"></div>
+  <div class="music-bar"></div>
+  <div class="music-bar"></div>
+</div>
+
+<div id="wrapper">
+  <header>
+    <h1>Happy <span>18th</span> Birthday</h1>
+    <div class="header-line"></div>
+    <p>A day as beautiful as you</p>
+  </header>
+
+  <div id="content">
+
+    <!-- CAKE -->
+    <div id="cake-section">
+      <svg id="cake-svg" width="310" height="280" viewBox="0 0 310 280" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="flame" cx="50%" cy="75%" r="55%">
+            <stop offset="0%"   stop-color="#ffffff"/>
+            <stop offset="25%"  stop-color="#fff5aa"/>
+            <stop offset="65%"  stop-color="#ffaa33"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+          <radialGradient id="layer1grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fde8f0"/>
+            <stop offset="100%" stop-color="#f9c8da"/>
+          </radialGradient>
+          <radialGradient id="layer2grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#fef3e8"/>
+            <stop offset="100%" stop-color="#fce0c8"/>
+          </radialGradient>
+          <radialGradient id="layer3grad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#eef6ee"/>
+            <stop offset="100%" stop-color="#d4ecd4"/>
+          </radialGradient>
+          <filter id="softShadow">
+            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(180,120,140,0.2)"/>
+          </filter>
+        </defs>
+
+        <!-- ══ LAYER 1 TOP — 4 candles ══ -->
+        <!-- flames -->
+        <ellipse cx="105" cy="8"  rx="5" ry="7" fill="url(#flame)"><animate attributeName="ry" values="7;9;6;8;7" dur="0.38s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="130" cy="7"  rx="5" ry="7" fill="url(#flame)"><animate attributeName="ry" values="7;6;9;7;8;7" dur="0.45s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="178" cy="8"  rx="5" ry="7" fill="url(#flame)"><animate attributeName="ry" values="7;8;6;9;7" dur="0.42s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="203" cy="7"  rx="5" ry="7" fill="url(#flame)"><animate attributeName="ry" values="7;6;8;9;6;7" dur="0.35s" repeatCount="indefinite"/></ellipse>
+        <!-- glow under flames -->
+        <ellipse cx="105" cy="16" rx="6" ry="3" fill="#ffcc66" opacity="0.3"/>
+        <ellipse cx="130" cy="16" rx="6" ry="3" fill="#ffcc66" opacity="0.3"/>
+        <ellipse cx="178" cy="16" rx="6" ry="3" fill="#ffcc66" opacity="0.3"/>
+        <ellipse cx="203" cy="16" rx="6" ry="3" fill="#ffcc66" opacity="0.3"/>
+        <!-- bodies -->
+        <rect x="102" y="15" width="7" height="22" rx="2" fill="#f2a7c3"/>
+        <rect x="127" y="15" width="7" height="22" rx="2" fill="#d4a853"/>
+        <rect x="175" y="15" width="7" height="22" rx="2" fill="#a8c5a0"/>
+        <rect x="200" y="15" width="7" height="22" rx="2" fill="#f2a7c3"/>
+        <!-- layer 1 -->
+        <rect x="88"  y="37" width="132" height="42" rx="10" fill="url(#layer1grad)" filter="url(#softShadow)"/>
+        <rect x="88"  y="37" width="132" height="16" rx="10" fill="#fef0f5"/>
+        <!-- frosting drips -->
+        <path d="M105 53 Q107 63 105 70" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M128 49 Q130 61 128 70" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M152 53 Q154 63 152 70" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M176 49 Q178 61 176 70" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M200 53 Q202 63 200 70" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- flowers -->
+        <text x="118" y="66" font-size="13" text-anchor="middle" fill="#e07ea0" opacity="0.8">✿</text>
+        <text x="155" y="61" font-size="11" text-anchor="middle" fill="#d4a853" opacity="0.8">✦</text>
+        <text x="190" y="66" font-size="13" text-anchor="middle" fill="#e07ea0" opacity="0.8">✿</text>
+        <!-- gold border bottom -->
+        <rect x="88" y="73" width="132" height="6" rx="3" fill="#d4a853" opacity="0.5"/>
+
+        <!-- ══ LAYER 2 MIDDLE — 6 candles ══ -->
+        <!-- flames -->
+        <ellipse cx="72"  cy="89" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;5;7;6" dur="0.41s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="98"  cy="88" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;7;6" dur="0.37s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="148" cy="89" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.44s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="178" cy="88" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;6;5;7;6" dur="0.39s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="210" cy="89" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;7;8;6" dur="0.46s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="236" cy="88" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;8;5;6" dur="0.33s" repeatCount="indefinite"/></ellipse>
+        <!-- glow -->
+        <ellipse cx="72"  cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <ellipse cx="98"  cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <ellipse cx="148" cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <ellipse cx="178" cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <ellipse cx="210" cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <ellipse cx="236" cy="95" rx="5" ry="2.5" fill="#ffcc66" opacity="0.25"/>
+        <!-- bodies -->
+        <rect x="69"  y="95" width="6" height="18" rx="2" fill="#d4a853"/>
+        <rect x="95"  y="95" width="6" height="18" rx="2" fill="#a8c5a0"/>
+        <rect x="145" y="95" width="6" height="18" rx="2" fill="#f7c5a0"/>
+        <rect x="175" y="95" width="6" height="18" rx="2" fill="#f2a7c3"/>
+        <rect x="207" y="95" width="6" height="18" rx="2" fill="#d4a853"/>
+        <rect x="233" y="95" width="6" height="18" rx="2" fill="#a8c5a0"/>
+        <!-- layer 2 -->
+        <rect x="55"  y="113" width="198" height="48" rx="10" fill="url(#layer2grad)" filter="url(#softShadow)"/>
+        <rect x="55"  y="113" width="198" height="18" rx="10" fill="#fffaf4"/>
+        <!-- drips -->
+        <path d="M75  129 Q77 140 75  152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M102 125 Q104 138 102 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M130 129 Q132 140 130 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M158 125 Q160 138 158 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M186 129 Q188 140 186 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M214 125 Q216 138 214 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M236 129 Q238 140 236 152" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <!-- hearts -->
+        <text x="90"  y="146" font-size="12" text-anchor="middle" fill="#e07ea0" opacity="0.7">♥</text>
+        <text x="118" y="141" font-size="12" text-anchor="middle" fill="#d4a853" opacity="0.7">♥</text>
+        <text x="154" y="146" font-size="12" text-anchor="middle" fill="#e07ea0" opacity="0.7">♥</text>
+        <text x="190" y="141" font-size="12" text-anchor="middle" fill="#d4a853" opacity="0.7">♥</text>
+        <text x="222" y="146" font-size="12" text-anchor="middle" fill="#e07ea0" opacity="0.7">♥</text>
+        <!-- gold border -->
+        <rect x="55" y="155" width="198" height="6" rx="3" fill="#d4a853" opacity="0.45"/>
+
+        <!-- ══ LAYER 3 BOTTOM — 8 candles ══ -->
+        <!-- flames -->
+        <ellipse cx="33"  cy="170" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.4s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="60"  cy="169" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;5;7;6" dur="0.36s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="100" cy="170" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;6;7;6" dur="0.48s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="140" cy="169" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;6;8;5;6" dur="0.42s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="168" cy="170" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;7;8;6" dur="0.38s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="208" cy="169" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;8;6;5;7;6" dur="0.45s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="248" cy="170" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;7;5;8;6" dur="0.34s" repeatCount="indefinite"/></ellipse>
+        <ellipse cx="275" cy="169" rx="4" ry="6" fill="url(#flame)"><animate attributeName="ry" values="6;5;8;7;6" dur="0.47s" repeatCount="indefinite"/></ellipse>
+        <!-- glow -->
+        <ellipse cx="33"  cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="60"  cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="100" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="140" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="168" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="208" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="248" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <ellipse cx="275" cy="176" rx="5" ry="2.5" fill="#ffcc66" opacity="0.2"/>
+        <!-- bodies -->
+        <rect x="30"  y="176" width="6" height="18" rx="2" fill="#f2a7c3"/>
+        <rect x="57"  y="176" width="6" height="18" rx="2" fill="#d4a853"/>
+        <rect x="97"  y="176" width="6" height="18" rx="2" fill="#a8c5a0"/>
+        <rect x="137" y="176" width="6" height="18" rx="2" fill="#f7c5a0"/>
+        <rect x="165" y="176" width="6" height="18" rx="2" fill="#f2a7c3"/>
+        <rect x="205" y="176" width="6" height="18" rx="2" fill="#d4a853"/>
+        <rect x="245" y="176" width="6" height="18" rx="2" fill="#a8c5a0"/>
+        <rect x="272" y="176" width="6" height="18" rx="2" fill="#f7c5a0"/>
+        <!-- layer 3 -->
+        <rect x="15"  y="194" width="278" height="62" rx="12" fill="url(#layer3grad)" filter="url(#softShadow)"/>
+        <rect x="15"  y="194" width="278" height="22" rx="12" fill="#f5fbf5"/>
+        <!-- drips -->
+        <path d="M35  213 Q37 225 35  245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M65  209 Q67 223 65  245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M100 213 Q102 225 100 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M135 209 Q137 223 135 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M170 213 Q172 225 170 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M205 209 Q207 223 205 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M240 213 Q242 225 240 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path d="M273 209 Q275 223 273 245" stroke="#fff" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <!-- "18" text -->
+        <text x="155" y="233" font-size="26" font-weight="600" text-anchor="middle"
+              fill="#d4a853" font-family="Cormorant Garamond, serif" font-style="italic">18</text>
+        <!-- flowers on sides -->
+        <text x="60"  y="232" font-size="13" text-anchor="middle" fill="#e07ea0" opacity="0.6">✿</text>
+        <text x="250" y="232" font-size="13" text-anchor="middle" fill="#e07ea0" opacity="0.6">✿</text>
+        <text x="88"  y="226" font-size="10" text-anchor="middle" fill="#d4a853" opacity="0.5">✦</text>
+        <text x="222" y="226" font-size="10" text-anchor="middle" fill="#d4a853" opacity="0.5">✦</text>
+        <!-- gold bottom border -->
+        <rect x="15" y="250" width="278" height="6" rx="3" fill="#d4a853" opacity="0.4"/>
+        <!-- plate shadow -->
+        <ellipse cx="155" cy="265" rx="148" ry="9" fill="rgba(180,150,160,0.12)"/>
+      </svg>
+    </div>
+
+    <!-- PARAGRAPH FRAME -->
+    <div id="para-frame">
+      <span class="corner-ornament co-tl">✦</span>
+      <span class="corner-ornament co-tr">✦</span>
+      <span class="corner-ornament co-bl">✦</span>
+      <span class="corner-ornament co-br">✦</span>
+      <p id="para-text">
+        <span id="para-title">Happy Birthday</span>
+      </p>
+    </div>
+  </div>
+
+  <footer>Made with love ♡</footer>
+</div>
+
+<script>
+  /* ── FALLING PETALS ── */
+  const petalsEl = document.getElementById('petals-bg');
+  const petalColors = ['#f9d0e0','#fde8d0','#d4ecd4','#fdf0d0','#f9d8ec','#e8d4f0'];
+  for (let i = 0; i < 28; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = 6 + Math.random() * 12;
+    const col  = petalColors[i % petalColors.length];
+    const dur  = 8 + Math.random() * 12;
+    const del  = -(Math.random() * dur);
+    p.style.cssText = `
+      width:${size}px; height:${size * 0.7}px;
+      left:${Math.random() * 100}%;
+      background:${col};
+      animation-duration:${dur}s;
+      animation-delay:${del}s;
+    `;
+    petalsEl.appendChild(p);
+  }
+
+  /* ── BALLOONS ── */
+  const balloonColors = [
+    ['#f2a7c3','#fde0ec'],['#f7c5a0','#fde8d4'],['#a8c5a0','#d4ecd4'],
+    ['#d4a853','#f5dfa0'],['#c5b8f0','#e8e0fc'],['#f0c8a8','#fce8d4'],
+    ['#b8d8f0','#dceefb'],['#f2c0d0','#fde0e8']
+  ];
+  const rabbitFaces = [
+    // happy open smile
+    `<circle cx="19" cy="28" r="1.8" fill="#4a3a3a"/>
+     <circle cx="29" cy="28" r="1.8" fill="#4a3a3a"/>
+     <circle cx="19.7" cy="27.3" r="0.6" fill="#fff"/>
+     <circle cx="29.7" cy="27.3" r="0.6" fill="#fff"/>
+     <path d="M21 32 Q24 35.5 27 32" stroke="#4a3a3a" stroke-width="1.2" fill="none" stroke-linecap="round"/>`,
+    // wink smile
+    `<path d="M17 28 Q19 26 21 28" stroke="#4a3a3a" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+     <circle cx="29" cy="28" r="1.8" fill="#4a3a3a"/>
+     <circle cx="29.7" cy="27.3" r="0.6" fill="#fff"/>
+     <path d="M21 32 Q24 36 27 32" stroke="#4a3a3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>`,
+    // squint happy
+    `<path d="M17 29 Q19 26.5 21 29" stroke="#4a3a3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+     <path d="M27 29 Q29 26.5 31 29" stroke="#4a3a3a" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+     <path d="M20 33 Q24 37 28 33" stroke="#4a3a3a" stroke-width="1.2" fill="none" stroke-linecap="round"/>`,
+  ];
+
+  function makeBalloonSVG(fill, hi) {
+    return `<svg width="42" height="54" viewBox="0 0 42 54">
+      <ellipse cx="21" cy="24" rx="18" ry="21" fill="${fill}"/>
+      <ellipse cx="14" cy="15" rx="6" ry="5" fill="${hi}" opacity="0.6"/>
+      <path d="M21 45 Q19 50 21 54 Q23 50 21 45" fill="${fill}"/>
+      <polygon points="21,45 17.5,49 24.5,49" fill="${fill}"/>
+    </svg>`;
+  }
+
+  function makeRabbitSVG(fill, hi, faceIdx) {
+    const face = rabbitFaces[faceIdx % rabbitFaces.length];
+    return `<svg width="56" height="115" viewBox="0 0 56 115">
+      <!-- balloon -->
+      <ellipse cx="28" cy="22" rx="18" ry="20" fill="${fill}"/>
+      <ellipse cx="21" cy="14" rx="6" ry="5" fill="${hi}" opacity="0.5"/>
+      <path d="M28 42 Q26 46 28 50 Q30 46 28 42" fill="${fill}"/>
+      <polygon points="28,42 24.5,46 31.5,46" fill="${fill}"/>
+      <!-- string -->
+      <line x1="28" y1="50" x2="28" y2="60" stroke="rgba(180,150,160,0.5)" stroke-width="1.2"/>
+
+      <!-- RABBIT BODY -->
+      <!-- tail -->
+      <circle cx="42" cy="98" r="5" fill="#f0ece8"/>
+      <circle cx="42" cy="98" r="3" fill="#fff"/>
+      <!-- body -->
+      <ellipse cx="28" cy="92" rx="11" ry="14" fill="#f0ece8"/>
+      <!-- tummy -->
+      <ellipse cx="28" cy="95" rx="6.5" ry="8" fill="#fde8ec"/>
+      <!-- left arm raised holding string -->
+      <path d="M17 84 Q10 74 18 65" stroke="#f0ece8" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <path d="M18 65 Q22 60 28 62" stroke="#f0ece8" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- little paw fingers on raised arm -->
+      <circle cx="19" cy="63" r="2.5" fill="#fde8ec"/>
+      <circle cx="23" cy="61" r="2.5" fill="#fde8ec"/>
+      <circle cx="27" cy="61" r="2.5" fill="#fde8ec"/>
+      <!-- right arm relaxed -->
+      <path d="M39 84 Q46 80 44 92" stroke="#f0ece8" stroke-width="6" fill="none" stroke-linecap="round"/>
+      <circle cx="45" cy="93" r="3" fill="#fde8ec"/>
+      <!-- legs -->
+      <ellipse cx="21" cy="105" rx="7" ry="8" fill="#f0ece8"/>
+      <ellipse cx="35" cy="106" rx="7" ry="8" fill="#f0ece8"/>
+      <!-- big bunny feet -->
+      <ellipse cx="19" cy="112" rx="9" ry="4" fill="#e8dcd8"/>
+      <ellipse cx="35" cy="113" rx="9" ry="4" fill="#e8dcd8"/>
+
+      <!-- HEAD -->
+      <ellipse cx="28" cy="73" rx="13" ry="12" fill="#f0ece8"/>
+
+      <!-- LONG EARS -->
+      <!-- left ear -->
+      <ellipse cx="18" cy="53" rx="5" ry="13" fill="#f0ece8" transform="rotate(-8 18 53)"/>
+      <ellipse cx="18" cy="53" rx="2.8" ry="9" fill="#f9c8d8" opacity="0.7" transform="rotate(-8 18 53)"/>
+      <!-- right ear -->
+      <ellipse cx="38" cy="53" rx="5" ry="13" fill="#f0ece8" transform="rotate(8 38 53)"/>
+      <ellipse cx="38" cy="53" rx="2.8" ry="9" fill="#f9c8d8" opacity="0.7" transform="rotate(8 38 53)"/>
+
+      <!-- face -->
+      <!-- cheeks -->
+      <ellipse cx="16" cy="76" rx="4" ry="3" fill="#f9b8cc" opacity="0.45"/>
+      <ellipse cx="40" cy="76" rx="4" ry="3" fill="#f9b8cc" opacity="0.45"/>
+      <!-- nose -->
+      <ellipse cx="24" cy="31" rx="3" ry="2" fill="#f9b8cc" opacity="0.4"/>
+      <ellipse cx="32" cy="31" rx="3" ry="2" fill="#f9b8cc" opacity="0.4"/>
+      <ellipse cx="24" cy="73" rx="2" ry="1.5" fill="#f2a0b8"/>
+      <!-- nose line -->
+      <path d="M24 74.5 L24 76 Q28 78 32 76 L32 74.5" stroke="#e07898" stroke-width="0.8" fill="none"/>
+      <!-- eyes & expression -->
+      ${face}
+    </svg>`;
+  }
+
+  const balloonContainer = document.getElementById('balloons');
+  const rabbitIndices = new Set([2, 5, 9, 13, 17, 21]);
+  for (let i = 0; i < 24; i++) {
+    const [fill, hi] = balloonColors[i % balloonColors.length];
+    const b = document.createElement('div');
+    b.className = 'balloon';
+    const left = 2 + Math.random() * 92;
+    const dur  = 8 + Math.random() * 10;
+    const del  = -(Math.random() * dur);
+    b.style.cssText = `left:${left}%; animation-duration:${dur}s; animation-delay:${del}s;`;
+    if (rabbitIndices.has(i)) {
+      b.innerHTML = makeRabbitSVG(fill, hi, i % 3);
+    } else {
+      b.innerHTML = makeBalloonSVG(fill, hi) + '<div class="balloon-string"></div>';
+    }
+    balloonContainer.appendChild(b);
+  }
+
+  /* ── MUSIC ── */
+  function startExperience() {
+    const overlay = document.getElementById('music-overlay');
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.style.display = 'none', 1000);
+    const audio = document.getElementById('bg-music');
+    audio.volume = 0.75;
+    audio.play();
+  }
+</script>
+</body>
+</html>
